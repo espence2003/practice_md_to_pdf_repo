@@ -16,14 +16,16 @@ jobs:
         fetch-depth: 1
     - name: Create .pdfs
       uses: scottypate/md-to-pdf@v0.1.1
-      env: {
+      env:
         # Use this parameter to determine where the generated .pdf(s) will be stored.
         PDF_DIR: './pdfs'
-      }
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v1.6.1
-      uses: Perdoo/pull-request-update-body-action@v1.0.1
-      with:
-        ghToken: ${{ secrets.GITHUB_TOKEN }}
-        body: "Hello World!"
-
+      env:
+        # The token is built in to actions. No config required.
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        COMMIT_MESSAGE: Add .pdf files.
+        PULL_REQUEST_TITLE: Add .pdf files.
+        PULL_REQUEST_BRANCH: pdf-add
+        PULL_REQUEST_BODY: :wave: Here are the .pdf files you requested.
+        PULL_REQUEST_REVIEWERS: scottypate
