@@ -22,10 +22,8 @@ jobs:
       }
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v1.6.1
-      env:
-        # The token is built in to actions. No config required.
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        PULL_REQUEST_TITLE: Add .pdf files.
-        PULL_REQUEST_BRANCH: pdf-add
-        PULL_REQUEST_REVIEWERS: scottypate
+      uses: Perdoo/pull-request-update-body-action@v1.0.1
+      with:
+        ghToken: ${{ secrets.GITHUB_TOKEN }}
+        body: "Hello World!"
 
